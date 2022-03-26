@@ -10,7 +10,7 @@ class Example_Client(object):
     Use this class for reference when using this module
 
     Note that the class variable names are capitalized
-    after version 1.5 it`s not necessary anymore
+    - After version 1.5 it's not necessary anymore -
     """
 
     def __init__(self, username: str, login: str, password: str):
@@ -266,7 +266,7 @@ class Database(object):
                 self.lock.acquire(True)
                 self.cursor.execute(
                     f"""UPDATE {table_name} SET {value_to_change} = '{new_value}' WHERE {param_str}""")
-            except (Exception, sqlite3.ProgrammingError, sqlite3.OperationalError) as e:
+            except (sqlite3.ProgrammingError, sqlite3.OperationalError) as e:
                 print(f"[DATA_CONTROL] ERROR: {e} | VALUE: {value_to_change} - {new_value} - {param_str}")
                 time.sleep(0.2)
                 self.update_value(table_name, value_to_change, new_value, search_params, search_params_2nd)
