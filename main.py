@@ -1,8 +1,9 @@
-import threading
-from dotenv import load_dotenv
 import os
+import threading
+
+from dotenv import load_dotenv
+
 from src.python.services import database_controller
-from src.python.services.open_weather import get_climate_info
 
 __app_name__ = ""
 __description__ = ""
@@ -12,7 +13,6 @@ __author__ = ""
 __author_email__ = ""
 
 load_dotenv()
-OPEN_WEATHER_API_KEY = os.environ.get("OPEN_WEATHER_API_KEY")
 IP_INFO_API_KEY = os.environ.get("IP_INFO_API_KEY")
 
 
