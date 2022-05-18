@@ -1,31 +1,28 @@
 import os
-import threading
 
 from dotenv import load_dotenv
 
-from src.python.services import database_controller
+from src.python.services.intents import IntentRecognizer
 
-__app_name__ = ""
-__description__ = ""
+__app_name__ = "VoiceFY"
+__description__ = "UM ALGORITMO QUE FAZ O RECONHECIMENTO DA INTENÇÃO, HUMOR E EMOÇÃO ATRAVÉS DE FALA " \
+                  "PARA A SEGURANÇA DA MULHER"
 __version__ = 0.1
 __license__ = "MIT"
-__author__ = ""
-__author_email__ = ""
+__author__ = ["Caio Quintas", "Ana Carolina", "Arnold Brito", "Luiz Eduardo", "William Kelvem"]
+__author_email__ = ["caioquintassantiago@gmail.com"]
 
 load_dotenv()
-IP_INFO_API_KEY = os.environ.get("IP_INFO_API_KEY")
+GOOGLE_AUDIO_RECOGNIZER_API = os.environ.get("GOOGLE_AUDIO_RECOGNIZER_API")
 
 
 def main():
-    """
-    Starts the application
-    """
+    # listener = Listener(GOOGLE_AUDIO_RECOGNIZER_API)
+    intent_recognizer = IntentRecognizer("data/intents.json")
 
-    # Create the database object and runs the worker
-    database = database_controller.Database(r"C:\Users\caioq\Documents\Projeti-2022\data\database.db")
-
-    database_worker_thread = threading.Thread(target=database.worker, daemon=True)
-    database_worker_thread.start()
+    score = intent_recognizer.recognize_text("eu vou te matar sua vaca")
+    if score > 3:
+        print("ALERT")
 
 
 if __name__ == "__main__":
