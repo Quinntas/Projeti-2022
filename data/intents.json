@@ -1,17 +1,46 @@
 {
   "bad_words": [
-    "morrer",
-    "matar",
-    "morra",
-    "morre",
-    "mata",
-    "morta",
-    "mortar"
+    {
+      "word": "morra",
+      "score": 2
+    },
+    {
+      "word": "morre",
+      "score": 2
+    },
+    {
+      "word": "matou",
+      "score": 2
+    },
+    {
+      "word": "mata",
+      "score": 2
+    },
+    {
+      "word": "morta",
+      "score": 2
+    },
+    {
+      "word": "mortar",
+      "score": 2
+    }
   ],
   "completion_phrases": [
-    "eu vou te",
-    "voce vai",
-    "voce esta",
-    "voce ta"
+    {
+      "phrase": "eu vou te",
+      "score": 2
+    },
+    {
+      "phrase": "voce vai",
+      "score": 2
+    },
+    {
+      "phrase": "voce esta",
+      "score": 2
+    },
+    {
+      "phrase": "voce ta",
+      "score": 2
+    }
   ]
 }
