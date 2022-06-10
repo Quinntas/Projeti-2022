@@ -19,7 +19,12 @@ class IntentRecognizer(object):
             for bad_word in self.bad_words:
                 phrase = completion_phrase['phrase'] + " " + bad_word['word']
                 score = completion_phrase['score'] + bad_word['score']
-                phrases.append({"phrase": phrase, "score": score})
+                temp = {"phrase": phrase, "score": score}
+                if "alt" in bad_word.keys():
+                    temp['alt'] = []
+                    for alt in bad_word['alt']:
+                        temp['alt'].append(completion_phrase['phrase'] + " " + alt)
+                phrases.append(temp)
         return phrases
 
     def recognize_phrase(self, text: str) -> int:
@@ -29,9 +34,15 @@ class IntentRecognizer(object):
         for bad_phrase in self.bad_phrases:
             if bad_phrase['phrase'] == text or bad_phrase['phrase'] in text:
                 worry_score += bad_phrase['score']
+            elif "alt" in bad_phrase:
+                for alt in bad_phrase['alt']:
+                    if alt == text or alt in text:
+                        worry_score += bad_phrase['score']
 
         for bad_word in self.bad_words:
             if bad_word['word'] in text_arr:
+                worry_score += bad_word['score']
+            elif "alt" in bad_word.keys() and text_arr in bad_word['alt']:
                 worry_score += bad_word['score']
 
         return worry_score

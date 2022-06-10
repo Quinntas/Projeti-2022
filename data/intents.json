@@ -6,6 +6,9 @@
     },
     {
       "word": "morre",
+      "alt": [
+        "morrer"
+      ],
       "score": 2
     },
     {
@@ -14,14 +17,16 @@
     },
     {
       "word": "mata",
+      "alt": [
+        "matar"
+      ],
       "score": 2
     },
     {
       "word": "morta",
-      "score": 2
-    },
-    {
-      "word": "mortar",
+      "alt": [
+        "morto"
+      ],
       "score": 2
     }
   ],
