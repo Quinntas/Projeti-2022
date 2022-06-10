@@ -4,6 +4,14 @@
     "matar",
     "morra",
     "morre",
-    "mata"
+    "mata",
+    "morta",
+    "mortar"
+  ],
+  "completion_phrases": [
+    "eu vou te",
+    "voce vai",
+    "voce esta",
+    "voce ta"
   ]
 }
