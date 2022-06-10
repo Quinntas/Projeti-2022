@@ -1,4 +1,3 @@
-import asyncio
 import os
 
 from dotenv import load_dotenv
@@ -17,15 +16,14 @@ load_dotenv()
 GOOGLE_AUDIO_RECOGNIZER_API = os.environ.get("GOOGLE_AUDIO_RECOGNIZER_API")
 
 
-async def main():
+def main():
     # listener = Listener(GOOGLE_AUDIO_RECOGNIZER_API)
     intents = IntentRecognizer('data/intents.json')
 
     while True:
         # listened_text = listener.listen(True)
-        score = intents.recognize_text('eu vou te matar, voce vai morrer')
-        print(score)
+        score = intents.recognize_text('eu vou te mata')
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

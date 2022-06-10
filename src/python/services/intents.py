@@ -32,19 +32,24 @@ class IntentRecognizer(object):
         text_arr = text.split()
 
         for bad_phrase in self.bad_phrases:
-            if bad_phrase['phrase'] == text or bad_phrase['phrase'] in text:
+            if bad_phrase['phrase'] in text:
                 worry_score += bad_phrase['score']
-            elif "alt" in bad_phrase:
+
+            elif "alt" in bad_phrase.keys():
                 for alt in bad_phrase['alt']:
-                    if alt == text or alt in text:
+                    if alt in text:
                         worry_score += bad_phrase['score']
 
         for bad_word in self.bad_words:
             if bad_word['word'] in text_arr:
                 worry_score += bad_word['score']
-            elif "alt" in bad_word.keys() and text_arr in bad_word['alt']:
-                worry_score += bad_word['score']
 
+            elif "alt" in bad_word.keys():
+                for alt in bad_word['alt']:
+                    if alt in text_arr:
+                        worry_score += bad_word['score']
+
+        print(111111111111111111111111)
         return worry_score
 
     @staticmethod
