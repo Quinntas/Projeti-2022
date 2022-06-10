@@ -23,8 +23,9 @@ class IntentRecognizer(object):
     def recognize_phrase(self, text: str) -> int:
         worry_score = 0
 
-        if text in self.bad_phrases:
-            worry_score += 1
+        for phrase in self.bad_phrases:
+            if phrase == text or phrase in text:
+                worry_score += 1
 
         for word in text.split():
             if word in self.bad_words:
@@ -32,5 +33,9 @@ class IntentRecognizer(object):
 
         return worry_score
 
+    @staticmethod
+    def clean_text(text: str) -> str:
+        return text.replace(",", "").replace(".", "")
+
     def recognize_text(self, text: str) -> int:
-        return self.recognize_phrase(text)
+        return self.recognize_phrase(self.clean_text(text))
